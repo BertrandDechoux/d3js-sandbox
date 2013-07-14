@@ -95,13 +95,13 @@ $(function() {
 
   function getNext(map, current, command) {
     switch(command) {
-      case "U":
+      case "W":
         return map.grid[current.x][current.y-1];
-      case "D":
+      case "S":
         return map.grid[current.x][current.y+1];
-      case "R":
+      case "D":
         return map.grid[current.x+1][current.y];
-      case "L":
+      case "A":
         return map.grid[current.x-1][current.y];
       default:
         throw "Unexpected command : "+command;
@@ -111,7 +111,7 @@ $(function() {
   function executeCommands(e) {
     var content = $('#commands').val();
     console.log("execute "+content);
-    content = content.toUpperCase().replace(/[^UDRL]/g, "");
+    content = content.toUpperCase().replace(/[^WSAD]/g, "");
     $('#commands').val(content);
     var path = [start];
     var current = start;
